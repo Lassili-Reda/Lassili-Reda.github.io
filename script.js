@@ -35,25 +35,25 @@ $(document).ready(function(){
 
     // typing text animation script
     var typed = new Typed(".typing", {
-        strings: ["Student", "Web Marketer", "Freelancer"],
+        strings: ["Business Analyst", "Data Analyst", "Project Manager"],
         typeSpeed: 100,
         backSpeed: 60,
         loop: true
     });
 
     var typed = new Typed(".typing-2", {
-        strings: ["Student", "Web Marketer", "Freelancer"],
+        strings: ["Business Analyst", "Data Analyst", "Project Manager"],
         typeSpeed: 100,
         backSpeed: 60,
         loop: true
     });
 
     // owl carousel script
-    $('.carousel').owlCarousel({
+    var carousel = $('.carousel').owlCarousel({
         margin: 20,
         loop: true,
         autoplay: true,
-        autoplayTimeOut: 2000,
+        autoplayTimeout: 2000, // Faster autoplay (2 seconds)
         autoplayHoverPause: true,
         responsive: {
             0:{
@@ -69,5 +69,14 @@ $(document).ready(function(){
                 nav: false
             }
         }
+    });
+
+    // Manual navigation
+    $('.next-btn').click(function() {
+        carousel.trigger('next.owl.carousel');
+    });
+
+    $('.prev-btn').click(function() {
+        carousel.trigger('prev.owl.carousel');
     });
 });
