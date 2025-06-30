@@ -79,4 +79,36 @@ $(document).ready(function(){
     $('.prev-btn').click(function() {
         carousel.trigger('prev.owl.carousel');
     });
+
+    // testimonials carousel script
+    var testimonialsCarousel = $('.testimonials-carousel').owlCarousel({
+        margin: 20,
+        loop: true,
+        autoplay: true,
+        autoplayTimeout: 3000, // 3 seconds for testimonials
+        autoplayHoverPause: true,
+        responsive: {
+            0:{
+                items: 1,
+                nav: false
+            },
+            600:{
+                items: 2,
+                nav: false
+            },
+            1000:{
+                items: 3,
+                nav: false
+            }
+        }
+    });
+
+    // Manual navigation for testimonials
+    $('.testimonials-next-btn').click(function() {
+        testimonialsCarousel.trigger('next.owl.carousel');
+    });
+
+    $('.testimonials-prev-btn').click(function() {
+        testimonialsCarousel.trigger('prev.owl.carousel');
+    });
 });
