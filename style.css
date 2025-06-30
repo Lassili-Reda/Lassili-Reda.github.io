@@ -866,8 +866,8 @@ footer span a:hover{
 
 /* Reduce gap between testimonials and contact */
 .testimonials {
-    padding-bottom: 30px;
+    padding: 100px 0 50px 0;
 }
 .contact {
-    padding-top: 30px;
+    padding-top: 50px;
 }
