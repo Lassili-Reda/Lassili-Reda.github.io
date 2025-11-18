@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <!-- Created By CodingNepal -->
-<html lang="en">
+<html lang="en" id="html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Reda's Protfolio</title>
+    <title data-translate="title">Welcome to Reda's Protfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -22,14 +22,18 @@
         <div class="max-width">
             <div class="logo"><a href="#">Portfo<span>lio.</span></a></div>
             <ul class="menu">
-                <li><a href="#home" class="menu-btn">Home</a></li>
-                <li><a href="#about" class="menu-btn">About</a></li>
-                <li><a href="#services" class="menu-btn">Services</a></li>
-                <li><a href="#skills" class="menu-btn">Skills</a></li>
-                <li><a href="#projects" class="menu-btn">Projects</a></li>   
-                <li><a href="#testimonials" class="menu-btn">Testimonials</a></li>
-                <li><a href="#contact" class="menu-btn">Contact</a></li>
+                <li><a href="#home" class="menu-btn" data-translate="nav-home">Home</a></li>
+                <li><a href="#about" class="menu-btn" data-translate="nav-about">About</a></li>
+                <li><a href="#services" class="menu-btn" data-translate="nav-services">Services</a></li>
+                <li><a href="#skills" class="menu-btn" data-translate="nav-skills">Skills</a></li>
+                <li><a href="#projects" class="menu-btn" data-translate="nav-projects">Projects</a></li>   
+                <li><a href="#testimonials" class="menu-btn" data-translate="nav-testimonials">Testimonials</a></li>
+                <li><a href="#contact" class="menu-btn" data-translate="nav-contact">Contact</a></li>
             </ul>
+            <div class="language-selector">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="fr">FR</button>
+            </div>
             <div class="menu-btn">
                 <i class="fas fa-bars"></i>
             </div>
@@ -40,10 +44,10 @@
     <section class="home" id="home">
         <div class="max-width">
             <div class="home-content">
-                <div class="text-1">Hello, my name is</div>
+                <div class="text-1" data-translate="home-greeting">Hello, my name is</div>
                 <div class="text-2">REDA</div>
-                <div class="text-3">And I'm a <span class="typing"></span></div>
-                <a href="mailto:lassiliziani@gmail.com">Hire me</a>
+                <div class="text-3"><span data-translate="home-intro">And I'm a</span> <span class="typing"></span></div>
+                <a href="mailto:lassiliziani@gmail.com" data-translate="home-hire">Hire me</a>
                 <a href="https://www.linkedin.com/in/reda-lassili-519875183/" target="_blank" class="social-linkedin">
                     <i class="fab fa-linkedin"></i>
                 </a>
@@ -54,16 +58,18 @@
     <!-- about section start -->
     <section class="about" id="about">
         <div class="max-width">
-            <h2 class="title">About me</h2>
+            <h2 class="title" data-translate="about-title">About me</h2>
             <div class="about-content">
                 <div class="column left">
                     <img src="imageprofil.jpg" alt="">
                 </div>
                 <div class="column right">
-                    <div class="text">I'm REDA and I'm a <span class="typing-2"></span></div>
-                    <p> Data-driven CRM Specialist and Business Analyst passionate about turning numbers into stories that boost customer loyalty. Fluent in English and French, I thrive on building smart, automated marketing workflows that save time and maximize impact. With hands-on experience in Power BI, Looker Studio, and Tableau, I love crafting insights that actually move the needle. From designing targeted CRM campaigns to audience segmentation and performance analysis, I bring a creative yet analytical touch. Naturally collaborative, I enjoy connecting data, creativity, and automation to deliver strategies that truly resonate.</p>
-                  <!--  <a href="REDA_LASSILI_CV.pdf" download="Reda_Lassili_CV">Download CV Fr</a>
-                    <a href="REDA_CV_ENG.pdf" download="Reda_Lassili_Resume">Download CV Eng</a>-->
+                    <div class="text"><span data-translate="about-intro">I'm REDA and I'm a</span> <span class="typing-2"></span></div>
+                    <p data-translate="about-description"> Data-driven CRM Specialist and Business Analyst passionate about turning numbers into stories that boost customer loyalty. Fluent in English and French, I thrive on building smart, automated marketing workflows that save time and maximize impact. With hands-on experience in Power BI, Looker Studio, and Tableau, I love crafting insights that actually move the needle. From designing targeted CRM campaigns to audience segmentation and performance analysis, I bring a creative yet analytical touch. Naturally collaborative, I enjoy connecting data, creativity, and automation to deliver strategies that truly resonate.</p>
+                    <div class="resume-buttons">
+                        <a href="CV_fr_reda_lassili_updated.pdf" download="Reda_Lassili_CV" class="resume-btn resume-btn-fr" data-translate="resume-fr">Télécharger CV (FR)</a>
+                        <a href="Resume_reda_lassili_updated.pdf" download="Reda_Lassili_Resume" class="resume-btn resume-btn-en" data-translate="resume-en">Download Resume (EN)</a>
+                    </div>
 
                 </div>
             </div>
@@ -73,17 +79,17 @@
     <!-- services section start -->
     <section class="services" id="services">
         <div class="max-width">
-            <h2 class="title">My services</h2>
+            <h2 class="title" data-translate="services-title">My services</h2>
             <div class="serv-content">
                 <div class="card">
                     <div class="box">
                         <i class="fas fa-paint-brush"></i>
-                        <div class="text">Data Analysis </div>
+                        <div class="text" data-translate="services-data-title">Data Analysis </div>
                         <p>
-                            <li>Develop interactive dashboards (Power BI, Tableau)</li>
-                            <li>Optimize data pipelines and ETL processes</li>
-                            <li>KPIs analysis to extract exploitable insights</li>
-                            <li>Identify key trends and business opportunities</li>
+                            <li data-translate="services-data-1">Develop interactive dashboards (Power BI, Tableau)</li>
+                            <li data-translate="services-data-2">Optimize data pipelines and ETL processes</li>
+                            <li data-translate="services-data-3">KPIs analysis to extract exploitable insights</li>
+                            <li data-translate="services-data-4">Identify key trends and business opportunities</li>
 
                         </p>
                     </div>
@@ -91,24 +97,24 @@
                 <div class="card">
                     <div class="box">
                         <i class="fas fa-chart-line"></i>
-                        <div class="text">Process Automation</div>
+                        <div class="text" data-translate="services-automation-title">Process Automation</div>
                         <p>
-                            <li>Identify inefficiencies and optimize workflows</li>
-                            <li>Automate repetitive business processes</li>
-                            <li>Automate data reporting and visualization</li>
-                            <li>Integrate API solutions for seamless data exchange</li>
+                            <li data-translate="services-automation-1">Identify inefficiencies and optimize workflows</li>
+                            <li data-translate="services-automation-2">Automate repetitive business processes</li>
+                            <li data-translate="services-automation-3">Automate data reporting and visualization</li>
+                            <li data-translate="services-automation-4">Integrate API solutions for seamless data exchange</li>
                         </p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="box">
                         <i class="fas fa-code"></i>
-                        <div class="text">CRM Optimization</div>
+                        <div class="text" data-translate="services-crm-title">CRM Optimization</div>
                         <p>
-                            <li>Optimize CRM tools (Salesforce, HubSpot, Zoho)</li>
-                            <li>Integrate CRM with analytics tools (GA4, Looker Studio)</li>
-                            <li>Enhance the user experience UX by optimizing the customer journey </li>
-                            <li>Perform A/B testing for marketing insights </li>
+                            <li data-translate="services-crm-1">Optimize CRM tools (Salesforce, HubSpot, Zoho)</li>
+                            <li data-translate="services-crm-2">Integrate CRM with analytics tools (GA4, Looker Studio)</li>
+                            <li data-translate="services-crm-3">Enhance the user experience UX by optimizing the customer journey </li>
+                            <li data-translate="services-crm-4">Perform A/B testing for marketing insights </li>
                         </p>
                     </div>
                 </div>
@@ -120,11 +126,11 @@
     <!-- skills section start -->
     <section class="skills" id="skills">
         <div class="max-width">
-            <h2 class="title">My skills</h2>
+            <h2 class="title" data-translate="skills-title">My skills</h2>
             <div class="skills-content">
                 <div class="text-center">
-                    <div class="text">Data & Automation Expert</div>
-                    <p>Skilled in advanced analytics using Python, SQL, and visualization tools like Power BI and Tableau to transform complex data into actionable insights.
+                    <div class="text" data-translate="skills-expert-title">Data & Automation Expert</div>
+                    <p data-translate="skills-expert-description">Skilled in analytics using Python, SQL, and visualization tools like Power BI and Tableau to transform complex data into actionable insights.
                         Proficient in CRM optimization, API integration, and AI-driven automation to streamline workflows and enhance efficiency.
                         Leverage AI agents and automation to accelerate data analysis, optimize processes, and deliver high-impact business solutions in less time.
                     </p>
@@ -133,34 +139,34 @@
                     <!-- First row -->
                     <div class="skill-item">
                         <i class="fas fa-chart-line"></i>
-                        <h3>Data Analytics</h3>
-                        <p>Power BI, Tableau, Advanced Analytics</p>
+                        <h3 data-translate="skills-analytics-title">Data Analytics</h3>
+                        <p data-translate="skills-analytics-desc">Power BI, Tableau, Advanced Analytics</p>
                     </div>
                     <div class="skill-item">
                         <i class="fas fa-database"></i>
-                        <h3>Data Management</h3>
-                        <p>ETL, Data Pipeline Optimization</p>
+                        <h3 data-translate="skills-management-title">Data Management</h3>
+                        <p data-translate="skills-management-desc">ETL, Data Pipeline Optimization</p>
                     </div>
                     <div class="skill-item">
                         <i class="fas fa-robot"></i>
-                        <h3>Automation</h3>
-                        <p>Process and Workflow Automation</p>
+                        <h3 data-translate="skills-automation-title">Automation</h3>
+                        <p data-translate="skills-automation-desc">Process and Workflow Automation</p>
                     </div>
                     <!-- Second row -->
                     <div class="skill-item">
                         <i class="fas fa-project-diagram"></i>
-                        <h3>Project Management</h3>
-                        <p>Agile, Team Coordination</p>
+                        <h3 data-translate="skills-pm-title">Project Management</h3>
+                        <p data-translate="skills-pm-desc">Agile, Team Coordination</p>
                     </div>
                     <div class="skill-item">
                         <i class="fas fa-chart-pie"></i>
-                        <h3>Business Intelligence</h3>
-                        <p>KPI Analysis, Reporting</p>
+                        <h3 data-translate="skills-bi-title">Business Intelligence</h3>
+                        <p data-translate="skills-bi-desc">KPI Analysis, Reporting</p>
                     </div>
                     <div class="skill-item">
                         <i class="fas fa-users"></i>
-                        <h3>CRM</h3>
-                        <p>Salesforce, HubSpot, Zoho</p>
+                        <h3 data-translate="skills-crm-title">CRM</h3>
+                        <p data-translate="skills-crm-desc">Salesforce, HubSpot, Zoho</p>
                     </div>
                 </div>
             </div>
@@ -169,14 +175,14 @@
    <!-- projects section start -->
    <section class="projects" id="projects">
     <div class="max-width">
-        <h2 class="title">My Projects</h2>
+        <h2 class="title" data-translate="projects-title">My Projects</h2>
         <div class="carousel owl-carousel">
             <div class="card">
                 <div class="box">
                     <img src="images/integration.png" alt="">
-                    <div class="text">Link-Keywords Integration</div>
+                    <div class="text" data-translate="project-1-title">Link-Keywords Integration</div>
                     <p>
-                        <li>I was responsible for writing content for artists pages on See Tickets ticketing website. Initially, I manually added links to keywords in the text. 
+                        <li data-translate="project-1-desc">I was responsible for writing content for artists pages on See Tickets ticketing website. Initially, I manually added links to keywords in the text. 
                             To automize this process, I developed a Python application, boosting SEO and driving more traffic to concert listings. 
                             I kept the keywords list up to date by analyzing the most searched terms and queries using Google Analytics. Additionally, I deployed Semrush for insights to guide the selection process and improve user navigation.
                             </li>
@@ -186,11 +192,10 @@
             <div class="card">
                 <div class="box">
                     <img src="images/zolaspotify.png" alt="">
-                    <div class="text">Spotify iFrame API</div>
+                    <div class="text" data-translate="project-2-title">Spotify iFrame API</div>
                     <p>
-                        <li>I optimized musicians pages on See Tickets website by integrating the Spotify iframe API. This allowed for an easy playback of music directly on the page, enriching the user experience. 
+                        <li data-translate="project-2-desc">I optimized musicians pages on See Tickets website by integrating the Spotify iframe API. This allowed for an easy playback of music directly on the page, enriching the user experience. 
                             Following approval from senior marketing executives, the API was rolled out across all website pages, ensuring consistency and maximizing engagement with a variety of content options.
-                        </li>
                         </li>
                     </p>
                 </div>
@@ -198,35 +203,35 @@
             <div class="card">
                 <div class="box">
                     <img src="images/inactif.png" alt="">
-                    <div class="text">Sales Dashboard Power BI</div>
+                    <div class="text" data-translate="project-3-title">Sales Dashboard Power BI</div>
                     <p>
-                        <li>Designed Power BI dashboards to analyze sales performance across multiple regions and product lines.</li>
-                        <li>Created dynamic KPI visualizations with drill-down capabilities.</li>
-                        <li>Implemented DAX measures for advanced calculations and custom aggregations.</li>
-                        <li>Set up automated data refresh using Power BI Gateway, ensuring real-time insights from multiple data sources including SQL Server and Excel files.</li>
+                        <li data-translate="project-3-desc-1">Designed Power BI dashboards to analyze sales performance across multiple regions and product lines.</li>
+                        <li data-translate="project-3-desc-2">Created dynamic KPI visualizations with drill-down capabilities.</li>
+                        <li data-translate="project-3-desc-3">Implemented DAX measures for advanced calculations and custom aggregations.</li>
+                        <li data-translate="project-3-desc-4">Set up automated data refresh using Power BI Gateway, ensuring real-time insights from multiple data sources including SQL Server and Excel files.</li>
                     </p>
                 </div>
             </div>
             <div class="card">
                 <div class="box">
                     <img src="images/scrap.png" alt="">
-                    <div class="text">Web Scrapping Data</div>
+                    <div class="text" data-translate="project-4-title">Web Scrapping Data</div>
                     <p>
-                        <li>Using Selenium libray, I wrote a python script that collects Data from online insights reports and websites.</li>
-                        <li>I placed the Data in a PowerPoint file using Microsoft python API</li>
-                        <li>When the script is launched it sends automatic communication emails through outlook including a PDF/PowerPoint file with daily Data</li>
+                        <li data-translate="project-4-desc-1">Using Selenium libray, I wrote a python script that collects Data from online insights reports and websites.</li>
+                        <li data-translate="project-4-desc-2">I placed the Data in a PowerPoint file using Microsoft python API</li>
+                        <li data-translate="project-4-desc-3">When the script is launched it sends automatic communication emails through outlook including a PDF/PowerPoint file with daily Data</li>
                     </p>
                 </div>
             </div>
             <div class="card">
                 <div class="box">
                     <img src="images/loinbridge.jpg" alt="">
-                    <div class="text">REST API to SQL Pipeline</div>
+                    <div class="text" data-translate="project-5-title">REST API to SQL Pipeline</div>
                     <p>
-                        <li>Developed an ETL pipeline using Python to automate data extraction from multiple REST APIs.</li>
-                        <li>Engineered data transformation logic using Pandas to clean, normalize, and structure the API response data, ensuring data quality and consistency.</li>
-                        <li>Implemented an efficient SQL database schema and used SQLAlchemy ORM to handle automated data loading and updates.</li>
-                        <li>Improved data accuracy by eliminating human error in data entry.</li>
+                        <li data-translate="project-5-desc-1">Developed an ETL pipeline using Python to automate data extraction from multiple REST APIs.</li>
+                        <li data-translate="project-5-desc-2">Engineered data transformation logic using Pandas to clean, normalize, and structure the API response data, ensuring data quality and consistency.</li>
+                        <li data-translate="project-5-desc-3">Implemented an efficient SQL database schema and used SQLAlchemy ORM to handle automated data loading and updates.</li>
+                        <li data-translate="project-5-desc-4">Improved data accuracy by eliminating human error in data entry.</li>
                     </p>
                 </div>
             </div>
@@ -264,12 +269,12 @@
 <!-- testimonials section start -->
 <section class="testimonials" id="testimonials">
     <div class="max-width">
-        <h2 class="title">What People Say</h2>
+        <h2 class="title" data-translate="testimonials-title">What People Say</h2>
         <div class="testimonials-carousel owl-carousel">
             <div class="testimonial-card">
                 <div class="testimonial-content">
                     <div class="testimonial-text">
-                        <p>"It was a pleasure to work with Reda. His commitment, autonomy and ability to adapt to any situation make him a valuable asset. He's always looking to improve and is interested in all aspects of e-commerce and the web in general. He is also bilingual and has a broad general knowledge, enabling him to integrate quickly into any environment."</p>
+                        <p data-translate="testimonial-1">"It was a pleasure to work with Reda. His commitment, autonomy and ability to adapt to any situation make him a valuable asset. He's always looking to improve and is interested in all aspects of e-commerce and the web in general. He is also bilingual and has a broad general knowledge, enabling him to integrate quickly into any environment."</p>
                     </div>
                     <div class="testimonial-author">
                         <img src="images/profile1.jfif" alt="Arnaud Devel">
@@ -283,7 +288,7 @@
             <div class="testimonial-card">
                 <div class="testimonial-content">
                     <div class="testimonial-text">
-                        <p>"Reda is a young man full of talent, adaptable, a source of new ideas.
+                        <p data-translate="testimonial-2">"Reda is a young man full of talent, adaptable, a source of new ideas.
                             I recommend ."</p>
                     </div>
                     <div class="testimonial-author">
@@ -298,7 +303,7 @@
             <div class="testimonial-card">
                 <div class="testimonial-content">
                     <div class="testimonial-text">
-                        <p>"Reda proved to be a talented and passionate professional. He has a perfect command of digital marketing strategies and tools, and his innovative ideas have always been invaluable in our projects. Reda is also an excellent communicator, able to work effectively in a team.
+                        <p data-translate="testimonial-3">"Reda proved to be a talented and passionate professional. He has a perfect command of digital marketing strategies and tools, and his innovative ideas have always been invaluable in our projects. Reda is also an excellent communicator, able to work effectively in a team.
                             I highly recommend Reda for any digital marketing opportunity."</p>
                     </div>
                     <div class="testimonial-author">
@@ -313,7 +318,7 @@
             <div class="testimonial-card">
                 <div class="testimonial-content">
                     <div class="testimonial-text">
-                        <p>" Reda is a serious and dedicated young man. He has great communication and professional skills in his field of work and I would highly recommend him."</p>
+                        <p data-translate="testimonial-4">" Reda is a serious and dedicated young man. He has great communication and professional skills in his field of work and I would highly recommend him."</p>
                     </div>
                     <div class="testimonial-author">
                         <img src="images/profile4.jfif" alt="Clare Girard">
@@ -327,7 +332,7 @@
             <div class="testimonial-card">
                 <div class="testimonial-content">
                     <div class="testimonial-text">
-                        <p>"I highly recommend Reda !!."</p>
+                        <p data-translate="testimonial-5">"I highly recommend Reda !!."</p>
                     </div>
                     <div class="testimonial-author">
                         <img src="images/profile5.jfif" alt="Rémy Colazzi">
@@ -350,55 +355,55 @@
 <!-- contact section start -->
 <section class="contact" id="contact">
     <div class="max-width">
-        <h2 class="title">Contact me</h2>
+        <h2 class="title" data-translate="contact-title">Contact me</h2>
         <div class="contact-content">
             <div class="column left">
-                <div class="text">Get in Touch</div>
-                <p>Whether you're interested in working with me or just want to say hello. Please use the form below or send an email to 
+                <div class="text" data-translate="contact-getintouch">Get in Touch</div>
+                <p><span data-translate="contact-description">Whether you're interested in working with me or just want to say hello. Please use the form below or send an email to</span> 
                     <a href="mailto:lassiliziani@gmail.com">Reda Lassili</a> :                    </p>
                 <div class="icons">
                     <div class="row">
                         <i class="fas fa-user"></i>
                         <div class="info">
-                            <div class="head">Name</div>
+                            <div class="head" data-translate="contact-name">Name</div>
                             <div class="sub-title">Reda Lassili</div>
                         </div>
                     </div>
                     <div class="row">
                         <i class="fas fa-map-marker-alt"></i>
                         <div class="info">
-                            <div class="head">Address</div>
+                            <div class="head" data-translate="contact-address">Address</div>
                             <div class="sub-title"> 10 Place la Joliette, Marseille </div>
                         </div>
                     </div>
                     <div class="row">
                         <i class="fas fa-envelope"></i>
                         <div class="info">
-                            <div class="head">Email</div>
+                            <div class="head" data-translate="contact-email">Email</div>
                             <div class="sub-title"><a href="mailto:lassiliziani@gmail.com">lassiliziani@gmail.com</a> </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="column right">
-                <div class="text">Message me</div>
+                <div class="text" data-translate="contact-message">Message me</div>
                 <form action="#">
                     <div class="fields">
                         <div class="field name">
-                            <input type="text" placeholder="Name" required>
+                            <input type="text" data-placeholder-translate="contact-form-name" placeholder="Name" required>
                         </div>
                         <div class="field email">
-                            <input type="email" placeholder="Email" required>
+                            <input type="email" data-placeholder-translate="contact-form-email" placeholder="Email" required>
                         </div>
                     </div>
                     <div class="field">
-                        <input type="text" placeholder="Subject" required>
+                        <input type="text" data-placeholder-translate="contact-form-subject" placeholder="Subject" required>
                     </div>
                     <div class="field textarea">
-                        <textarea cols="30" rows="10" placeholder="Message.." required></textarea>
+                        <textarea cols="30" rows="10" data-placeholder-translate="contact-form-message" placeholder="Message.." required></textarea>
                     </div>
                     <div class="button-area">
-                        <button type="submit"><a href="mailto:lassiliziani@gmail.com"></a>Send message</button>
+                        <button type="submit"><a href="mailto:lassiliziani@gmail.com"></a><span data-translate="contact-send">Send message</span></button>
                     </div>
                 </form>
             </div>
@@ -408,7 +413,7 @@
 
 <!-- footer section start -->
 <footer>
-    <span>Created By <a href="#">Reda Lassili</a> | <span class="far fa-copyright"></span> 2021 All rights reserved.</span>
+    <span><span data-translate="footer-text-1">Created By</span> <a href="#">Reda Lassili</a> | <span class="far fa-copyright"></span> 2021 <span data-translate="footer-text-2">All rights reserved.</span></span>
 </footer>
 
 <script src="script.js"></script>
