@@ -179,181 +179,281 @@ const translations = {
 };
 
 // Language management
-let currentLang = localStorage.getItem('language') || 'en';
+let currentLang = 'en';
+try {
+    if (typeof(Storage) !== "undefined") {
+        currentLang = localStorage.getItem('language') || 'en';
+    }
+} catch(e) {
+    currentLang = 'en';
+}
 let typedInstance1 = null;
 let typedInstance2 = null;
 
 // Function to translate text
 function translatePage(lang) {
-    currentLang = lang;
-    localStorage.setItem('language', lang);
-    document.documentElement.lang = lang;
-    document.documentElement.setAttribute('lang', lang);
-    
-    // Update title
-    document.querySelector('title[data-translate="title"]').textContent = translations[lang].title;
-    
-    // Update all elements with data-translate attribute
-    document.querySelectorAll('[data-translate]').forEach(element => {
-        const key = element.getAttribute('data-translate');
-        if (translations[lang][key]) {
-            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                element.placeholder = translations[lang][key];
-            } else {
-                element.textContent = translations[lang][key];
+    try {
+        currentLang = lang;
+        if (typeof(Storage) !== "undefined") {
+            localStorage.setItem('language', lang);
+        }
+        document.documentElement.lang = lang;
+        document.documentElement.setAttribute('lang', lang);
+        
+        // Update title
+        const titleEl = document.querySelector('title[data-translate="title"]');
+        if (titleEl && translations[lang] && translations[lang].title) {
+            titleEl.textContent = translations[lang].title;
+        }
+        
+        // Update all elements with data-translate attribute
+        document.querySelectorAll('[data-translate]').forEach(element => {
+            const key = element.getAttribute('data-translate');
+            if (translations[lang] && translations[lang][key]) {
+                if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                    element.placeholder = translations[lang][key];
+                } else {
+                    // For regular text elements, just replace the content
+                    element.textContent = translations[lang][key];
+                }
             }
+        });
+        
+        // Update placeholders
+        document.querySelectorAll('[data-placeholder-translate]').forEach(element => {
+            const key = element.getAttribute('data-placeholder-translate');
+            if (translations[lang] && translations[lang][key]) {
+                element.placeholder = translations[lang][key];
+            }
+        });
+        
+        // Update language buttons
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            if (btn.getAttribute('data-lang') === lang) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+        
+        // Update typing animations - only if Typed is available
+        if (typeof Typed !== 'undefined') {
+            const typingStrings = lang === 'fr' 
+                ? ["Analyste Business", "Spécialiste CRM", "Chef de projet"]
+                : ["Business Analyst", "CRM Specialist", "Project Manager"];
+            
+            if (typedInstance1) {
+                try {
+                    typedInstance1.destroy();
+                } catch(e) {}
+                typedInstance1 = null;
+            }
+            if (typedInstance2) {
+                try {
+                    typedInstance2.destroy();
+                } catch(e) {}
+                typedInstance2 = null;
+            }
+            
+            // Wait a bit to ensure DOM is ready
+            setTimeout(function() {
+                const typingEl1 = document.querySelector(".typing");
+                const typingEl2 = document.querySelector(".typing-2");
+                
+                if (typingEl1) {
+                    typedInstance1 = new Typed(".typing", {
+                        strings: typingStrings,
+                        typeSpeed: 100,
+                        backSpeed: 60,
+                        loop: true
+                    });
+                }
+                
+                if (typingEl2) {
+                    typedInstance2 = new Typed(".typing-2", {
+                        strings: typingStrings,
+                        typeSpeed: 100,
+                        backSpeed: 60,
+                        loop: true
+                    });
+                }
+            }, 100);
         }
-    });
-    
-    // Update placeholders
-    document.querySelectorAll('[data-placeholder-translate]').forEach(element => {
-        const key = element.getAttribute('data-placeholder-translate');
-        if (translations[lang][key]) {
-            element.placeholder = translations[lang][key];
-        }
-    });
-    
-    // Update language buttons
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        if (btn.getAttribute('data-lang') === lang) {
-            btn.classList.add('active');
-        } else {
-            btn.classList.remove('active');
-        }
-    });
-    
-    // Update typing animations
-    const typingStrings = lang === 'fr' 
-        ? ["Analyste Business", "Spécialiste CRM", "Chef de projet"]
-        : ["Business Analyst", "CRM Specialist", "Project Manager"];
-    
-    if (typedInstance1) {
-        typedInstance1.destroy();
+    } catch(error) {
+        console.error('Translation error:', error);
     }
-    if (typedInstance2) {
-        typedInstance2.destroy();
-    }
-    
-    typedInstance1 = new Typed(".typing", {
-        strings: typingStrings,
-        typeSpeed: 100,
-        backSpeed: 60,
-        loop: true
-    });
+}
 
-    typedInstance2 = new Typed(".typing-2", {
-        strings: typingStrings,
-        typeSpeed: 100,
-        backSpeed: 60,
-        loop: true
+// Wait for both jQuery and Typed.js to be loaded
+function initializeTranslations() {
+    // Ensure translations object is available
+    if (typeof translations === 'undefined') {
+        console.error('Translations object not found');
+        return;
+    }
+    
+    // Initialize page with saved language
+    if (typeof currentLang === 'undefined') {
+        try {
+            currentLang = localStorage.getItem('language') || 'en';
+        } catch(e) {
+            currentLang = 'en';
+        }
+    }
+    
+    // Small delay to ensure DOM is ready
+    setTimeout(function() {
+        translatePage(currentLang);
+    }, 100);
+}
+
+// Initialize when DOM is ready (with or without jQuery)
+if (typeof jQuery !== 'undefined') {
+    $(document).ready(function(){
+        // Initialize translations
+        initializeTranslations();
+        
+        // Language selector click handlers
+        $('.lang-btn').click(function(){
+            const lang = $(this).data('lang');
+            if (lang) {
+                translatePage(lang);
+            }
+        });
+        
+        $(window).scroll(function(){
+            // sticky navbar on scroll script
+            if(this.scrollY > 20){
+                $('.navbar').addClass("sticky");
+            }else{
+                $('.navbar').removeClass("sticky");
+            }
+            
+            // scroll-up button show/hide script
+            if(this.scrollY > 500){
+                $('.scroll-up-btn').addClass("show");
+            }else{
+                $('.scroll-up-btn').removeClass("show");
+            }
+        });
+
+        // slide-up script
+        $('.scroll-up-btn').click(function(){
+            $('html').animate({scrollTop: 0});
+            // removing smooth scroll on slide-up button click
+            $('html').css("scrollBehavior", "auto");
+        });
+
+        $('.navbar .menu li a').click(function(){
+            // applying again smooth scroll on menu items click
+            $('html').css("scrollBehavior", "smooth");
+        });
+
+        // toggle menu/navbar script
+        $('.menu-btn').click(function(){
+            $('.navbar .menu').toggleClass("active");
+            $('.menu-btn i').toggleClass("active");
+        });
+
+        // owl carousel script
+        var carousel = $('.carousel').owlCarousel({
+            margin: 20,
+            loop: true,
+            autoplay: true,
+            autoplayTimeout: 2000, // Faster autoplay (2 seconds)
+            autoplayHoverPause: true,
+            responsive: {
+                0:{
+                    items: 1,
+                    nav: false
+                },
+                600:{
+                    items: 2,
+                    nav: false
+                },
+                1000:{
+                    items: 3,
+                    nav: false
+                }
+            }
+        });
+
+        // Manual navigation
+        $('.next-btn').click(function() {
+            carousel.trigger('next.owl.carousel');
+        });
+
+        $('.prev-btn').click(function() {
+            carousel.trigger('prev.owl.carousel');
+        });
+
+        // testimonials carousel script
+        var testimonialsCarousel = $('.testimonials-carousel').owlCarousel({
+            margin: 20,
+            loop: true,
+            autoplay: true,
+            autoplayTimeout: 3000, // 3 seconds for testimonials
+            autoplayHoverPause: true,
+            responsive: {
+                0:{
+                    items: 1,
+                    nav: false
+                },
+                600:{
+                    items: 2,
+                    nav: false
+                },
+                1000:{
+                    items: 3,
+                    nav: false
+                }
+            }
+        });
+
+        // Manual navigation for testimonials
+        $('.testimonials-next-btn').click(function() {
+            testimonialsCarousel.trigger('next.owl.carousel');
+        });
+
+        $('.testimonials-prev-btn').click(function() {
+            testimonialsCarousel.trigger('prev.owl.carousel');
+        });
+    });
+} else {
+    // Fallback if jQuery is not loaded - use vanilla JS
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initializeTranslations);
+    } else {
+        initializeTranslations();
+    }
+    
+    // Language selector click handlers (vanilla JS)
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.lang-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+                if (lang) {
+                    translatePage(lang);
+                }
+            });
+        });
     });
 }
 
-$(document).ready(function(){
-    // Initialize page with saved language
-    translatePage(currentLang);
-    
-    // Language selector click handlers
-    $('.lang-btn').click(function(){
-        const lang = $(this).data('lang');
-        translatePage(lang);
-    });
-    
-    $(window).scroll(function(){
-        // sticky navbar on scroll script
-        if(this.scrollY > 20){
-            $('.navbar').addClass("sticky");
-        }else{
-            $('.navbar').removeClass("sticky");
-        }
-        
-        // scroll-up button show/hide script
-        if(this.scrollY > 500){
-            $('.scroll-up-btn').addClass("show");
-        }else{
-            $('.scroll-up-btn').removeClass("show");
-        }
-    });
-
-    // slide-up script
-    $('.scroll-up-btn').click(function(){
-        $('html').animate({scrollTop: 0});
-        // removing smooth scroll on slide-up button click
-        $('html').css("scrollBehavior", "auto");
-    });
-
-    $('.navbar .menu li a').click(function(){
-        // applying again smooth scroll on menu items click
-        $('html').css("scrollBehavior", "smooth");
-    });
-
-    // toggle menu/navbar script
-    $('.menu-btn').click(function(){
-        $('.navbar .menu').toggleClass("active");
-        $('.menu-btn i').toggleClass("active");
-    });
-
-    // owl carousel script
-    var carousel = $('.carousel').owlCarousel({
-        margin: 20,
-        loop: true,
-        autoplay: true,
-        autoplayTimeout: 2000, // Faster autoplay (2 seconds)
-        autoplayHoverPause: true,
-        responsive: {
-            0:{
-                items: 1,
-                nav: false
-            },
-            600:{
-                items: 2,
-                nav: false
-            },
-            1000:{
-                items: 3,
-                nav: false
+// Additional fallback: ensure translations run even if jQuery/DOMContentLoaded fires early
+window.addEventListener('load', function() {
+    // Double-check translations are applied (in case they weren't applied earlier)
+    if (typeof translations !== 'undefined' && typeof currentLang !== 'undefined') {
+        // Only re-apply if needed (check if page is still in default language)
+        const firstTranslatable = document.querySelector('[data-translate]');
+        if (firstTranslatable) {
+            const key = firstTranslatable.getAttribute('data-translate');
+            const currentText = firstTranslatable.textContent.trim();
+            const defaultText = translations['en'][key];
+            // If text still matches default English and we want French (or vice versa)
+            if (currentLang !== 'en' && currentText === defaultText) {
+                translatePage(currentLang);
             }
         }
-    });
-
-    // Manual navigation
-    $('.next-btn').click(function() {
-        carousel.trigger('next.owl.carousel');
-    });
-
-    $('.prev-btn').click(function() {
-        carousel.trigger('prev.owl.carousel');
-    });
-
-    // testimonials carousel script
-    var testimonialsCarousel = $('.testimonials-carousel').owlCarousel({
-        margin: 20,
-        loop: true,
-        autoplay: true,
-        autoplayTimeout: 3000, // 3 seconds for testimonials
-        autoplayHoverPause: true,
-        responsive: {
-            0:{
-                items: 1,
-                nav: false
-            },
-            600:{
-                items: 2,
-                nav: false
-            },
-            1000:{
-                items: 3,
-                nav: false
-            }
-        }
-    });
-
-    // Manual navigation for testimonials
-    $('.testimonials-next-btn').click(function() {
-        testimonialsCarousel.trigger('next.owl.carousel');
-    });
-
-    $('.testimonials-prev-btn').click(function() {
-        testimonialsCarousel.trigger('prev.owl.carousel');
-    });
+    }
 });
