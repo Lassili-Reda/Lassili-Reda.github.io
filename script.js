@@ -239,8 +239,8 @@ function translatePage(lang) {
         // Update typing animations - only if Typed is available
         if (typeof Typed !== 'undefined') {
             const typingStrings = lang === 'fr' 
-                ? ["Analyste Business", "Spécialiste CRM", "Chef de projet"]
-                : ["Business Analyst", "CRM Specialist", "Project Manager"];
+                ? ["Data Analyst", "Spécialiste CRM", "Chef de projet"]
+                : ["Business Analyst", "Marketing Analyst", "Project Manager"];
             
             if (typedInstance1) {
                 try {
@@ -457,3 +457,4 @@ window.addEventListener('load', function() {
         }
     }
 });
+
